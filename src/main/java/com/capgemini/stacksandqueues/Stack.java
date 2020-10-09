@@ -19,4 +19,7 @@ public class Stack {
 	public void printSatck() {
 		myLinkedList.printList();
 	}
+	public void pop() {
+		myLinkedList.deleteLast();	
+	}
 }

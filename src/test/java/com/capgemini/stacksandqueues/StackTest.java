@@ -29,9 +29,19 @@ public class StackTest {
 		myStack.push(myNode1);
 		myStack.push(myNode2);
 		myStack.push(myNode3);
-		myStack.printSatck();
+		//myStack.printSatck();
 		MyNode result = myStack.peak();
 		assertEquals(myNode3, result);
+	}
+	@Test
+	public void testPop() {
+		myStack.push(myNode1);
+		myStack.push(myNode2);
+		myStack.push(myNode3);
+		myStack.pop();		
+		myStack.printSatck();
+		MyNode result = (MyNode) myStack.myLinkedList.tail;
+		assertEquals(myNode2, result);
 	}
 
 }
