@@ -1,32 +1,32 @@
 package com.capgemini.datastructures;
 
 public class LinkedList<K> {
-	public INode<K> head;
+	public INode head;
 
-	public INode<K> getHead() {
+	public INode getHead() {
 		return head;
 	}
 
-	public void setHead(INode<K> head) {
+	public void setHead(INode head) {
 		this.head = head;
 	}
 
-	public INode<K> getTail() {
+	public INode getTail() {
 		return tail;
 	}
 
-	public void setTail(INode<K> tail) {
+	public void setTail(INode tail) {
 		this.tail = tail;
 	}
 
-	public INode<K> tail;
+	public INode tail;
 
 	public LinkedList() {
 		head = null;
 		tail = null;
 	}
 
-	public void add(INode<K> myNode) {
+	public void add(INode myNode) {
 		if (this.tail == null)
 			this.tail = myNode;
 		if (this.head == null)
@@ -39,7 +39,7 @@ public class LinkedList<K> {
 
 	}
 
-	public void append(INode<K> myNode) {
+	public void append(INode myNode) {
 		if (this.tail == null)
 			this.tail = myNode;
 		if (this.head == null)
@@ -51,8 +51,8 @@ public class LinkedList<K> {
 
 	}
 
-	public void appendBetweenTwo(INode<K> myNode2, INode<K> myNode1, INode<K> myNode3) {
-		INode<K> temp = head;
+	public void appendBetweenTwo(INode myNode2, INode myNode1, INode myNode3) {
+		INode temp = head;
 		do {
 			if (temp.equals(myNode1) && temp.getNext().equals(myNode3)) {
 				myNode1.setNext(myNode2);
@@ -75,49 +75,83 @@ public class LinkedList<K> {
 				this.tail = temp;
 				break;
 			}
-			temp = (INode<K>) temp.getNext();
+			temp = (INode) temp.getNext();
 		}
 	}
 
-	public INode<K> searchNode(K key) {
-		INode<K> temp = head;
+	public INode searchNode(K key) {
+		INode temp = head;
 		while (true) {
 			if (temp.getKey().equals(key)) {
 				return temp;
 			}
-			temp = (INode<K>) temp.getNext();
+			temp = (INode) temp.getNext();
 		}
 	}
 
-	public void insertAfterKey(K key, INode<K> myNode) {
-		INode<K> temp = head;
+	public void insertAfterKey(K key, INode myNode) {
+		INode temp = head;
 		while (true) {
 			if (temp.getKey().equals(key)) {
 				myNode.setNext(temp.getNext());
 				temp.setNext(myNode);
 				break;
 			}
-			temp = (INode<K>) temp.getNext();
+			temp = (INode) temp.getNext();
 		}
 	}
 
 	public void deleteWithKey(K key) {
-		INode<K> temp = head;
-		while (temp.getNext()!=null) {
+		INode temp = head;
+		while (temp.getNext() != null) {
 			if (temp.getNext().getKey().equals(key)) {
 				temp.setNext(temp.getNext().getNext());
 			}
-			temp = (INode<K>) temp.getNext();
+			temp = (INode) temp.getNext();
 		}
 	}
 
 	public int size(LinkedList a) {
-		INode<K> temp = head;
+		INode temp = head;
 		int size = 0;
-		while (temp!=(null)) {
+		while (temp != (null)) {
 			size++;
-			temp = (INode<K>) temp.getNext();
+			temp = (INode) temp.getNext();
 		}
 		return size;
+	}
+
+	public <K extends Comparable> void sortedAdd() {
+		INode temp = (INode) head;
+		INode temp2;
+		if (temp.equals(head) || ((Comparable) temp.getKey()).compareTo((temp.getNext().getKey())) > 0) {
+			temp2 = temp;
+			temp = (temp.getNext());
+			temp2.setNext(temp.getNext());
+			temp.setNext(temp2);
+			head=temp;
+			System.out.println("true");
+
+		}
+		if (temp.getNext().getNext().equals(tail)
+				|| ((Comparable) temp.getNext().getKey()).compareTo((temp.getNext().getNext().getKey())) > 0) {
+			temp2 = temp.getNext();
+			temp.setNext(temp.getNext().getNext());
+			temp.getNext().setNext(temp2);
+			System.out.println("true");
+
+		}
+		while (!temp.getNext().getNext().equals(tail)) {
+			if (((Comparable) temp.getNext().getKey()).compareTo((temp.getNext().getNext().getKey())) >0) {
+				temp2 = temp.getNext();
+				temp.setNext(temp.getNext().getNext());
+				temp2.setNext(temp.getNext().getNext());
+				temp.getNext().setNext(temp2);
+				System.out.println(temp.getKey());
+			}//if(temp.getNext().getNext().getNext()==null) break;
+			temp = (INode) temp.getNext();
+
+			
+		}
 	}
 }

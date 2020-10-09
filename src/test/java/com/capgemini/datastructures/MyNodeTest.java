@@ -111,4 +111,18 @@ public class MyNodeTest {
 		boolean result = myLinkedList.getHead().getNext().getNext().equals(MyFourthNode) && myLinkedList.size(myLinkedList)==3;
 		assertEquals(true, result);
 	}
+	@Test
+	public void True_If_Sorted_Add_Success() {
+
+		myLinkedList.add(MyFirstNode);
+		myLinkedList.append(MySecondNode);
+		myLinkedList.append(MyThirdNode);
+		myLinkedList.append(MyFourthNode);
+		myLinkedList.sortedAdd();
+		System.out.println(myLinkedList.getHead().getKey()+ ""+myLinkedList.getHead().getNext().getKey()+ ""+myLinkedList.getHead().getNext().getNext().getKey()+ ""+myLinkedList.getHead().getNext().getNext().getNext().getKey());
+		boolean result = myLinkedList.getHead().equals(MySecondNode)
+				&& myLinkedList.getHead().getNext().equals(MyFirstNode) && myLinkedList.getTail().equals(MyFourthNode) 
+				&& myLinkedList.getHead().getNext().getNext().equals(MyThirdNode);
+		assertEquals(true, result);
+	}
 }
