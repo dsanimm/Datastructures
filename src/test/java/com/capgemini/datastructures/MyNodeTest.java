@@ -43,10 +43,11 @@ public class MyNodeTest {
 		assertEquals(true, result);
 	}
 
+	@Test
 	public void True_If_Insertion_Between_happens() {
 
-		myLinkedList.add(MyFirstNode);
-		myLinkedList.add(MyThirdNode);
+		myLinkedList.append(MyFirstNode);
+		myLinkedList.append(MyThirdNode);
 		myLinkedList.appendBetweenTwo(MySecondNode, MyFirstNode, MyThirdNode);
 
 		boolean result = myLinkedList.getHead().equals(MyFirstNode)
@@ -54,4 +55,14 @@ public class MyNodeTest {
 		assertEquals(true, result);
 	}
 
+	@Test
+	public void True_If_Head_deleted() {
+
+		myLinkedList.add(MyFirstNode);
+		myLinkedList.add(MySecondNode);
+		myLinkedList.add(MyThirdNode);
+		myLinkedList.deleteFirst();
+		boolean result = myLinkedList.getHead() == MySecondNode;
+		assertEquals(true, result);
+	}
 }
