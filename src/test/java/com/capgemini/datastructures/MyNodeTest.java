@@ -93,11 +93,22 @@ public class MyNodeTest {
 	@Test
 	public void True_If_Node_Insertion_Success() {
 
-		myLinkedList.add(MyFirstNode);
-		myLinkedList.add(MySecondNode);
-		myLinkedList.add(MyFourthNode);
-		myLinkedList.InsertAfterKey(30, MyThirdNode);
+		myLinkedList.append(MyFirstNode);
+		myLinkedList.append(MySecondNode);
+		myLinkedList.append(MyFourthNode);
+		myLinkedList.insertAfterKey(30, MyThirdNode);
 		boolean result = myLinkedList.getHead().getNext().getNext().equals(MyThirdNode);
+		assertEquals(true, result);
+	}
+	@Test
+	public void True_If_Node_Deleteion_Success() {
+
+		myLinkedList.append(MyFirstNode);
+		myLinkedList.append(MySecondNode);
+		myLinkedList.append(MyThirdNode);
+		myLinkedList.append(MyFourthNode);
+		myLinkedList.deleteWithKey(70);
+		boolean result = myLinkedList.getHead().getNext().getNext().equals(MyFourthNode) && myLinkedList.size(myLinkedList)==3;
 		assertEquals(true, result);
 	}
 }

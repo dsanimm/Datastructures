@@ -55,11 +55,8 @@ public class LinkedList<K> {
 		INode<K> temp = head;
 		do {
 			if (temp.equals(myNode1) && temp.getNext().equals(myNode3)) {
-				System.out.println("true");
 				myNode1.setNext(myNode2);
 				myNode2.setNext(myNode3);
-				System.out.println(myNode2.getKey());
-
 				break;
 			}
 			temp = (INode<K>) temp.getNext();
@@ -92,7 +89,7 @@ public class LinkedList<K> {
 		}
 	}
 
-	public void InsertAfterKey(K key,INode<K> myNode) {
+	public void insertAfterKey(K key, INode<K> myNode) {
 		INode<K> temp = head;
 		while (true) {
 			if (temp.getKey().equals(key)) {
@@ -104,4 +101,23 @@ public class LinkedList<K> {
 		}
 	}
 
+	public void deleteWithKey(K key) {
+		INode<K> temp = head;
+		while (temp.getNext()!=null) {
+			if (temp.getNext().getKey().equals(key)) {
+				temp.setNext(temp.getNext().getNext());
+			}
+			temp = (INode<K>) temp.getNext();
+		}
+	}
+
+	public int size(LinkedList a) {
+		INode<K> temp = head;
+		int size = 0;
+		while (temp!=(null)) {
+			size++;
+			temp = (INode<K>) temp.getNext();
+		}
+		return size;
+	}
 }
