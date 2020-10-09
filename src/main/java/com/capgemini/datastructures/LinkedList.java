@@ -58,8 +58,11 @@ public class LinkedList<K> {
 				System.out.println("true");
 				myNode1.setNext(myNode2);
 				myNode2.setNext(myNode3);
+				System.out.println(myNode2.getKey());
+
 				break;
 			}
+			temp = (INode<K>) temp.getNext();
 		} while (true);
 
 	}
@@ -78,11 +81,24 @@ public class LinkedList<K> {
 			temp = (INode<K>) temp.getNext();
 		}
 	}
+
 	public INode<K> searchNode(K key) {
 		INode<K> temp = head;
 		while (true) {
 			if (temp.getKey().equals(key)) {
 				return temp;
+			}
+			temp = (INode<K>) temp.getNext();
+		}
+	}
+
+	public void InsertAfterKey(K key,INode<K> myNode) {
+		INode<K> temp = head;
+		while (true) {
+			if (temp.getKey().equals(key)) {
+				myNode.setNext(temp.getNext());
+				temp.setNext(myNode);
+				break;
 			}
 			temp = (INode<K>) temp.getNext();
 		}

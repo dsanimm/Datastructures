@@ -9,6 +9,8 @@ public class MyNodeTest {
 	private MyNode<Integer> MyFirstNode;
 	private MyNode<Integer> MySecondNode;
 	private MyNode<Integer> MyThirdNode;
+	private MyNode<Integer> MyFourthNode;
+
 	private LinkedList myLinkedList;
 
 	@Before
@@ -16,6 +18,7 @@ public class MyNodeTest {
 		MyFirstNode = new MyNode<Integer>(56);
 		MySecondNode = new MyNode<Integer>(30);
 		MyThirdNode = new MyNode<Integer>(70);
+		MyFourthNode = new MyNode<Integer>(80);
 		myLinkedList = new LinkedList();
 	}
 
@@ -47,11 +50,13 @@ public class MyNodeTest {
 	public void True_If_Insertion_Between_happens() {
 
 		myLinkedList.append(MyFirstNode);
-		myLinkedList.append(MyThirdNode);
-		myLinkedList.appendBetweenTwo(MySecondNode, MyFirstNode, MyThirdNode);
+		myLinkedList.append(MySecondNode);
+		myLinkedList.append(MyFourthNode);
+
+		myLinkedList.appendBetweenTwo(MyThirdNode, MySecondNode, MyFourthNode);
 
 		boolean result = myLinkedList.getHead().equals(MyFirstNode)
-				&& myLinkedList.getHead().getNext().equals(MySecondNode) && myLinkedList.getTail().equals(MyThirdNode);
+				&& myLinkedList.getHead().getNext().equals(MySecondNode) && myLinkedList.getTail().equals(MyFourthNode) && myLinkedList.getHead().getNext().getNext().equals(MyThirdNode);
 		assertEquals(true, result);
 	}
 
@@ -83,6 +88,16 @@ public class MyNodeTest {
 		myLinkedList.add(MyThirdNode);
 		INode tempNode = myLinkedList.searchNode(30);
 		boolean result = tempNode == MySecondNode;
+		assertEquals(true, result);
+	}
+	@Test
+	public void True_If_Node_Insertion_Success() {
+
+		myLinkedList.add(MyFirstNode);
+		myLinkedList.add(MySecondNode);
+		myLinkedList.add(MyFourthNode);
+		myLinkedList.InsertAfterKey(30, MyThirdNode);
+		boolean result = myLinkedList.getHead().getNext().getNext().equals(MyThirdNode);
 		assertEquals(true, result);
 	}
 }
