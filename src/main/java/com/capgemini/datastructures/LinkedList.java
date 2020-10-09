@@ -41,6 +41,17 @@ public class LinkedList<K> {
 			tail.setNext(myNode);
 			tail = myNode;
 		}
+		
+			}
+	public void appendBetweenTwo(INode<K> myNode1,INode<K> myNode2,INode<K> myNode3) {
+		INode<K> temp = head;
+		while(temp.getNext()!=null) {
+			if (temp==myNode2 && temp.getNext()==myNode3)
+				{
+				myNode2.setNext(myNode1);
+				myNode1.setNext(myNode3);
+				}
+			}
 	}
 	
 }

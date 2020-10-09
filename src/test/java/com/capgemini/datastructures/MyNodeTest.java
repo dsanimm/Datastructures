@@ -10,16 +10,18 @@ public class MyNodeTest {
 	private MyNode<Integer> MySecondNode;
 	private MyNode<Integer> MyThirdNode;
 	private LinkedList myLinkedList;
+
 	@Before
 	public void setup() {
 		MyFirstNode = new MyNode<Integer>(56);
 		MySecondNode = new MyNode<Integer>(30);
 		MyThirdNode = new MyNode<Integer>(70);
 		myLinkedList = new LinkedList();
-		}
+	}
+
 	@Test
 	public void Given3Numbers_WhenLinked_ReturnsTrue() {
-		
+
 		myLinkedList.add(MyFirstNode);
 		myLinkedList.add(MySecondNode);
 		myLinkedList.add(MyThirdNode);
@@ -28,12 +30,24 @@ public class MyNodeTest {
 				&& myLinkedList.getHead().getNext().equals(MySecondNode) && myLinkedList.getTail().equals(MyFirstNode);
 		assertEquals(true, result);
 	}
+
 	@Test
 	public void Given3Numbers_WhenLinkedUsingAppend_ReturnsTrue() {
-		
+
 		myLinkedList.append(MyFirstNode);
 		myLinkedList.append(MySecondNode);
 		myLinkedList.append(MyThirdNode);
+
+		boolean result = myLinkedList.getHead().equals(MyFirstNode)
+				&& myLinkedList.getHead().getNext().equals(MySecondNode) && myLinkedList.getTail().equals(MyThirdNode);
+		assertEquals(true, result);
+	}
+
+	public void True_If_Insertion_Between_happens() {
+
+		myLinkedList.add(MyFirstNode);
+		myLinkedList.add(MyThirdNode);
+		myLinkedList.appendBetweenTwo(MySecondNode, MyFirstNode, MyThirdNode);
 
 		boolean result = myLinkedList.getHead().equals(MyFirstNode)
 				&& myLinkedList.getHead().getNext().equals(MySecondNode) && myLinkedList.getTail().equals(MyThirdNode);
