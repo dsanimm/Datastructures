@@ -65,4 +65,14 @@ public class MyNodeTest {
 		boolean result = myLinkedList.getHead() == MySecondNode;
 		assertEquals(true, result);
 	}
+	@Test
+	public void True_If_Tail_deleted() {
+
+		myLinkedList.add(MyFirstNode);
+		myLinkedList.add(MySecondNode);
+		myLinkedList.add(MyThirdNode);
+		myLinkedList.deleteLast();
+		boolean result = myLinkedList.getTail() == MySecondNode;
+		assertEquals(true, result);
+	}
 }

@@ -54,18 +54,29 @@ public class LinkedList<K> {
 	public void appendBetweenTwo(INode<K> myNode2, INode<K> myNode1, INode<K> myNode3) {
 		INode<K> temp = head;
 		do {
-			if (temp.equals(myNode1) && temp.getNext().equals(myNode3) ) {
+			if (temp.equals(myNode1) && temp.getNext().equals(myNode3)) {
 				System.out.println("true");
 				myNode1.setNext(myNode2);
 				myNode2.setNext(myNode3);
 				break;
 			}
-		}while (true);
+		} while (true);
 
 	}
 
 	public void deleteFirst() {
 		head = (INode<K>) head.getNext();
+	}
+
+	public void deleteLast() {
+		INode<K> temp = head;
+		while (true) {
+			if (temp.getNext().equals(this.tail)) {
+				this.tail = temp;
+				break;
+			}
+			temp = (INode<K>) temp.getNext();
+		}
 	}
 
 }
