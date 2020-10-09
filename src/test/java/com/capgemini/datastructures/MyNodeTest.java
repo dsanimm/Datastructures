@@ -2,22 +2,41 @@ package com.capgemini.datastructures;
 
 import static org.junit.Assert.*;
 
+import org.junit.Before;
 import org.junit.Test;
 
 public class MyNodeTest {
-
+	private MyNode<Integer> MyFirstNode;
+	private MyNode<Integer> MySecondNode;
+	private MyNode<Integer> MyThirdNode;
+	private LinkedList myLinkedList;
+	@Before
+	public void setup() {
+		MyFirstNode = new MyNode<Integer>(56);
+		MySecondNode = new MyNode<Integer>(30);
+		MyThirdNode = new MyNode<Integer>(70);
+		myLinkedList = new LinkedList();
+		}
 	@Test
 	public void Given3Numbers_WhenLinked_ReturnsTrue() {
-		MyNode<Integer> MyFirstNode = new MyNode<>(56);
-		MyNode<Integer> MySecondNode = new MyNode<>(30);
-		MyNode<Integer> MyThirdNode = new MyNode<>(70);
-		LinkedList<Integer> myLinkedList = new LinkedList<Integer>();
+		
 		myLinkedList.add(MyFirstNode);
 		myLinkedList.add(MySecondNode);
 		myLinkedList.add(MyThirdNode);
 
 		boolean result = myLinkedList.getHead().equals(MyThirdNode)
 				&& myLinkedList.getHead().getNext().equals(MySecondNode) && myLinkedList.getTail().equals(MyFirstNode);
+		assertEquals(true, result);
+	}
+	@Test
+	public void Given3Numbers_WhenLinkedUsingAppend_ReturnsTrue() {
+		
+		myLinkedList.append(MyFirstNode);
+		myLinkedList.append(MySecondNode);
+		myLinkedList.append(MyThirdNode);
+
+		boolean result = myLinkedList.getHead().equals(MyFirstNode)
+				&& myLinkedList.getHead().getNext().equals(MySecondNode) && myLinkedList.getTail().equals(MyThirdNode);
 		assertEquals(true, result);
 	}
 

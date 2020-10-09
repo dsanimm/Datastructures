@@ -30,5 +30,17 @@ public class LinkedList<K> {
 			this.head=myNode;
 			this.head.setNext(tempNode);
 		}
+			
 	}
+	public void append(INode<K> myNode) {
+		if(this.tail==null)
+			this.tail=myNode;
+		if(this.head==null)
+			this.head=myNode;
+		else {
+			tail.setNext(myNode);
+			tail = myNode;
+		}
+	}
+	
 }
