@@ -75,4 +75,14 @@ public class MyNodeTest {
 		boolean result = myLinkedList.getTail() == MySecondNode;
 		assertEquals(true, result);
 	}
+	@Test
+	public void True_If_Node_Search_Success() {
+
+		myLinkedList.add(MyFirstNode);
+		myLinkedList.add(MySecondNode);
+		myLinkedList.add(MyThirdNode);
+		INode tempNode = myLinkedList.searchNode(30);
+		boolean result = tempNode == MySecondNode;
+		assertEquals(true, result);
+	}
 }
