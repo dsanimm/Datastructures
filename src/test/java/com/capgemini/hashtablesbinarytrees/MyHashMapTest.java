@@ -57,7 +57,6 @@ public class MyHashMapTest {
 				value++;
 			myLinkedHashMap.add(word, value);
 		}
-		System.out.println(myLinkedHashMap.toString());
 		System.out.println("Frequency before deletion : " + myLinkedHashMap.get("avoidable"));
 		myLinkedHashMap.remove("avoidable");
 		System.out.println("Frequency after deletion : " + myLinkedHashMap.get("avoidable"));
