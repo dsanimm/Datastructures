@@ -81,11 +81,19 @@ public class LinkedList<K> {
 
 	public INode searchNode(K key) {
 		INode temp = head;
+		if (temp == null)
+			return null;
 		while (true) {
+
 			if (temp.getKey().equals(key)) {
 				return temp;
 			}
-			temp = (INode) temp.getNext();
+			if (temp.getNext() == null)
+				return null;
+			else {
+				temp = (INode) temp.getNext();
+			}
+
 		}
 	}
 
@@ -103,11 +111,14 @@ public class LinkedList<K> {
 
 	public void deleteWithKey(K key) {
 		INode temp = head;
-		while (temp.getNext() != null) {
-			if (temp.getNext().getKey().equals(key)) {
-				temp.setNext(temp.getNext().getNext());
+		if (temp != null) {
+			while (temp.getNext() != null) {
+				if (temp.getNext().getKey().equals(key)) {
+					temp.setNext(temp.getNext().getNext());
+				}
+				temp = (INode) temp.getNext();
+				if (temp==null) break;
 			}
-			temp = (INode) temp.getNext();
 		}
 	}
 
@@ -129,7 +140,7 @@ public class LinkedList<K> {
 			temp = (temp.getNext());
 			temp2.setNext(temp.getNext());
 			temp.setNext(temp2);
-			head=temp;
+			head = temp;
 			System.out.println("true");
 
 		}
@@ -142,16 +153,26 @@ public class LinkedList<K> {
 
 		}
 		while (!temp.getNext().getNext().equals(tail)) {
-			if (((Comparable) temp.getNext().getKey()).compareTo((temp.getNext().getNext().getKey())) >0) {
+			if (((Comparable) temp.getNext().getKey()).compareTo((temp.getNext().getNext().getKey())) > 0) {
 				temp2 = temp.getNext();
 				temp.setNext(temp.getNext().getNext());
 				temp2.setNext(temp.getNext().getNext());
 				temp.getNext().setNext(temp2);
 				System.out.println(temp.getKey());
-			}//if(temp.getNext().getNext().getNext()==null) break;
+			} // if(temp.getNext().getNext().getNext()==null) break;
 			temp = (INode) temp.getNext();
 
-			
 		}
 	}
+
+	public void printList() {
+
+		INode temp = head;
+		while (!temp.equals(tail)) {
+			System.out.print(temp.getKey() + "->");
+			temp = temp.getNext();
+		}
+		System.out.print(temp.getKey());
+	}
+
 }

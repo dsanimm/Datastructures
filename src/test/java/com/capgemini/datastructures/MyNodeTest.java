@@ -124,5 +124,6 @@ public class MyNodeTest {
 				&& myLinkedList.getHead().getNext().equals(MyFirstNode) && myLinkedList.getTail().equals(MyFourthNode) 
 				&& myLinkedList.getHead().getNext().getNext().equals(MyThirdNode);
 		assertEquals(true, result);
+		myLinkedList.printList();
 	}
 }

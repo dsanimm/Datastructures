@@ -4,6 +4,7 @@ import com.capgemini.datastructures.INode;
 
 public class MyBinarySearchTree {
 	public MyBinaryNode root;
+	private int size;
 
 	public MyBinaryNode getRoot() {
 		return root;
@@ -69,4 +70,28 @@ public class MyBinarySearchTree {
 				compareRight(rightNode.right, myNode);
 		}
 	}
-}
+	public int size() {
+		if (root == null)
+			return 0;
+		else if (root.left!=null && root.right!=null)
+			return size(root.left) + size(root.right) +1;
+		else if (root.left!=null )
+			return size(root.left)+1;
+		else if (root.right!=null )
+			return size(root.right)+1;
+		else return 1;
+	}
+	public int size( MyBinaryNode myNode) {
+		if (myNode ==null)
+			return 0;
+			else if (myNode.left!=null && myNode.right!=null)
+				return size(myNode.left) + size(myNode.right)+1;
+			else if (myNode.left!=null )
+				return size(myNode.left) +1;
+			else if (myNode.right!=null )
+				return size(myNode.right)+1;
+			else return 1;
+		
+	}
+	}
+
