@@ -30,4 +30,12 @@ public class MyBinarySearchTreeTest {
 		st.forEach(k->myBinaryTree.add(new MyBinaryNode(k)));
 		assertEquals(13, myBinaryTree.size());
 	}
+	@Test
+	public void givenAllNumbers_WhenAddedToBinaryTree_ShouldReturnSearchTrueIfPresent() {
+		MyBinarySearchTree myBinaryTree = new MyBinarySearchTree();
+		int arr[] ={56,30,70,22,40,60,95,11,3,16,65,53,67};
+		IntStream st = Arrays.stream(arr);
+		st.forEach(k->myBinaryTree.add(new MyBinaryNode(k)));
+		assertEquals(true, myBinaryTree.search(65));
+	}
 }
